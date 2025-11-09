@@ -1,0 +1,32 @@
+{
+  "test_time": "2025-11-09T14:56:01.395530",
+  "total": 3,
+  "passed": 3,
+  "pass_rate": 1.0,
+  "results": [
+    {
+      "question": "What's the diplomatic clause?",
+      "confidence": "High",
+      "score": 0.5788063802444715,
+      "has_reference": true,
+      "passed": true,
+      "answer": "1. The diplomatic clause allows the tenant to terminate the tenancy after 12 months if they are deported, refused permission to stay, or transferred to another country. \n\n2. The tenant must give at least 2 months' notice or pay 2 months' rent instead of notice, and they need to provide documentary evidence of their situation by the termination date or handover date.\n\n3. The diplomatic clause cannot be exercised during the renewal term unless both parties agree otherwise."
+    },
+    {
+      "question": "When things are spoiled/broken, who pays to repair?",
+      "confidence": "High",
+      "score": 0.5594888728979995,
+      "has_reference": true,
+      "passed": true,
+      "answer": "1. Direct answer: The Tenant is responsible for minor repairs and routine maintenance costing up to S$200, while the Landlord covers repairs above that amount unless caused by the Tenant's actions.\n\n2. Key details: The Tenant must pay for all minor repairs not exceeding S$200 per job. For repairs exceeding S$200, the Tenant pays the first S$200, and the Landlord pays the excess. The Landlord must approve any repairs over S$200, and they may choose their own contractor.\n\n3. Important notes: The Tenant is not responsible for repairs to air conditioning systems, water heaters, or structural repairs, which are covered by the Landlord unless caused by the Tenant's negligence."
+    },
+    {
+      "question": "What to do before returning the unit?",
+      "confidence": "High",
+      "score": 0.6290889397038328,
+      "has_reference": true,
+      "passed": true,
+      "answer": "1. Before returning the unit, you must ensure it is professionally cleaned and the curtains are dry cleaned, and you should return the premises in good condition, considering fair wear and tear. \n\n2. You are not required to repaint the walls and ceiling if the condition is due to fair wear and tear. You must also keep the air-conditioning units in good repair, but the landlord will cover costs for repairs due to fair wear and tear.\n\n3. Ensure that any damage caused by your neglect is addressed, as you are responsible for replacing any damaged, lost, or broken items. The agreement does not specify any additional requirements beyond these clauses."
+    }
+  ]
+}

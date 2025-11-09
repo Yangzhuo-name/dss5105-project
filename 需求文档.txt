@@ -1,0 +1,115 @@
+import streamlit as st
+from src.chat import ask
+
+st.set_page_config(page_title="Tenancy Chatbot", page_icon="🏠", layout="wide")
+
+WHATSAPP_URL = "https://wa.me/6586441099?text=Hello%2C%20I%20need%20assistance"
+
+# ===============================
+# FAQ DATA
+# ===============================
+FAQ_ITEMS = {
+    "Rent & Payment": [
+        "When is rent due?",
+        "What happens if rent is late?",
+    ],
+    "Deposit": [
+        "When will the security deposit be refunded?",
+    ],
+    "Pets": [
+        "Can I have pets in the house?",
+    ],
+    "Diplomatic Clause / Termination": [
+        "What is the diplomatic clause?",
+        "Can I end the tenancy early?",
+    ],
+    "Repairs & Maintenance": [
+        "Who is responsible for repairs?",
+        "Do I need to service the air-conditioning?",
+    ],
+    "Access & Inspection": [
+        "Can the landlord enter the premises?",
+    ],
+    "Move-out / Handover": [
+        "What must I do before handing over the unit?",
+    ],
+    "Others": [
+        "Are there any other rules I must follow?",
+    ]
+}
+
+# ===============================
+# SESSION
+# ===============================
+if "messages" not in st.session_state:
+    st.session_state["messages"] = []
+
+# ===============================
+# SIDEBAR FAQ
+# ===============================
+with st.sidebar:
+    st.markdown("###  FAQ (Click to Ask)")
+    for category, questions in FAQ_ITEMS.items():
+        with st.expander(category):
+            for q in questions:
+                if st.button(q):
+                    res = ask(q)
+                    st.session_state["messages"].append({"role": "user", "content": q})
+                    st.session_state["messages"].append({"role": "assistant", "content": res})
+                    st.rerun()
+
+# ===============================
+# HEADER
+# ===============================
+st.markdown("### Tenancy Agreement Chatbot")
+st.write("Ask any question about your tenancy agreement. I will answer clearly and provide legal references.")
+st.write("---")
+
+# ===============================
+# CHAT BUBBLES
+# ===============================
+for msg in st.session_state["messages"]:
+    if msg["role"] == "user":
+        st.markdown(
+            f"""
+            <div style="display:flex;justify-content:flex-end;">
+                <div style="background:#E3F2FD;padding:10px 15px;border-radius:12px;max-width:70%;text-align:right;">
+                    {msg["content"]}
+                </div>
+            </div>
+            """, unsafe_allow_html=True
+        )
+    else:
+        # detect fallback branch
+        if isinstance(msg["content"], dict) and msg["content"].get("fallback"):
+            st.markdown(
+                f"""
+                <div style="display:flex;justify-content:flex-start;">
+                    <div style="background:#F5F5F5;padding:10px 15px;border-radius:12px;max-width:70%;">
+                        {msg["content"]["answer"]}<br><br>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True
+            )
+            st.link_button("Contact via WhatsApp", WHATSAPP_URL)
+        else:
+            st.markdown(
+                f"""
+                <div style="display:flex;justify-content:flex-start;">
+                    <div style="background:#F5F5F5;padding:10px 15px;border-radius:12px;max-width:70%;">
+                        {msg["content"]["answer"] if isinstance(msg["content"], dict) else msg["content"]}
+                    </div>
+                </div>
+                """, unsafe_allow_html=True
+            )
+
+# ===============================
+# INPUT
+# ===============================
+user_input = st.chat_input("Type your question here...")
+
+if user_input:
+    res = ask(user_input)
+    st.session_state["messages"].append({"role": "user", "content": user_input})
+    st.session_state["messages"].append({"role": "assistant", "content": res})
+    st.rerun()

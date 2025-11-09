@@ -1,0 +1,158 @@
+{
+  "test_time": "2025-10-30T23:57:40.190314",
+  "total_questions": 16,
+  "correct": 7,
+  "accuracy": 43.75,
+  "confusion_matrix": {
+    "High": {
+      "High": 7,
+      "Medium": 0,
+      "Low": 0
+    },
+    "Medium": {
+      "High": 4,
+      "Medium": 0,
+      "Low": 0
+    },
+    "Low": {
+      "High": 4,
+      "Medium": 1,
+      "Low": 0
+    }
+  },
+  "per_class_accuracy": {
+    "High": 100.0,
+    "Medium": 0.0,
+    "Low": 0.0
+  },
+  "results": [
+    {
+      "question": "When is my rent due each month?",
+      "expected": "High",
+      "actual": "High",
+      "score": 0.545853038909777,
+      "has_reference": true,
+      "correct": true
+    },
+    {
+      "question": "What is the security deposit amount?",
+      "expected": "High",
+      "actual": "High",
+      "score": 0.46651502810516554,
+      "has_reference": true,
+      "correct": true
+    },
+    {
+      "question": "Who pays for electricity and water?",
+      "expected": "High",
+      "actual": "High",
+      "score": 0.6719746485787553,
+      "has_reference": true,
+      "correct": true
+    },
+    {
+      "question": "What's the diplomatic clause?",
+      "expected": "High",
+      "actual": "High",
+      "score": 0.5788063802444715,
+      "has_reference": true,
+      "correct": true
+    },
+    {
+      "question": "Who is responsible for air conditioning maintenance?",
+      "expected": "High",
+      "actual": "High",
+      "score": 0.42820588520203173,
+      "has_reference": true,
+      "correct": true
+    },
+    {
+      "question": "Can I keep pets?",
+      "expected": "High",
+      "actual": "High",
+      "score": 0.6371633872795921,
+      "has_reference": true,
+      "correct": true
+    },
+    {
+      "question": "Who pays for repairs under $200?",
+      "expected": "High",
+      "actual": "High",
+      "score": 0.5224580908188221,
+      "has_reference": true,
+      "correct": true
+    },
+    {
+      "question": "Can I paint the walls?",
+      "expected": "Medium",
+      "actual": "High",
+      "score": 0.5995649399168171,
+      "has_reference": true,
+      "correct": false
+    },
+    {
+      "question": "What happens if I want to install a washing machine?",
+      "expected": "Medium",
+      "actual": "High",
+      "score": 0.6947678640351069,
+      "has_reference": true,
+      "correct": false
+    },
+    {
+      "question": "Can I hang pictures on the wall?",
+      "expected": "Medium",
+      "actual": "High",
+      "score": 0.541710029053833,
+      "has_reference": true,
+      "correct": false
+    },
+    {
+      "question": "What if I need to break the lease due to job loss?",
+      "expected": "Medium",
+      "actual": "High",
+      "score": 0.5318094923662184,
+      "has_reference": true,
+      "correct": false
+    },
+    {
+      "question": "How do I negotiate a rent reduction?",
+      "expected": "Low",
+      "actual": "High",
+      "score": 0.6428756915742199,
+      "has_reference": true,
+      "correct": false
+    },
+    {
+      "question": "What's the average rent in this area?",
+      "expected": "Low",
+      "actual": "High",
+      "score": 0.6856085746775441,
+      "has_reference": true,
+      "correct": false
+    },
+    {
+      "question": "Can I get a tax deduction for my rent?",
+      "expected": "Low",
+      "actual": "High",
+      "score": 0.6189077301103448,
+      "has_reference": true,
+      "correct": false
+    },
+    {
+      "question": "Which moving company do you recommend?",
+      "expected": "Low",
+      "actual": "Medium",
+      "score": 0.8029884900859912,
+      "has_reference": true,
+      "correct": false
+    },
+    {
+      "question": "How do I apply for a housing loan?",
+      "expected": "Low",
+      "actual": "High",
+      "score": 0.6299894749669005,
+      "has_reference": true,
+      "correct": false
+    }
+  ]
+}

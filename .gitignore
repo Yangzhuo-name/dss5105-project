@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Vector store (太大，不要上传)
+vector_store/
+
+# Backup folders
+backup_*/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test outputs
+benchmark_results.json
+*.log
+
+
+# 🔐 Secrets / Environment
+.env
