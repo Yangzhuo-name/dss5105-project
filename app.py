@@ -1,8 +1,7 @@
 import pandas as pd
 import streamlit as st
 import base64
-import os, json, hashlib, secrets, html, re, shutil  # keep imports minimal
-import src.chat as chat  # chat.ask() and chat.set_active_pdf()
+import os, json, hashlib, secrets, html, re, shutil, importlib  # + html, re, shutil, importlib
 
 # ========== PAGE CONFIG ==========
 st.set_page_config(
@@ -11,6 +10,9 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# Import after page config (import the MODULE so we can reload it later)
+import src.chat as chat
 
 # ========== BERTSCORE HELPER ==========
 try:
@@ -51,8 +53,7 @@ def create_pdf_viewer(pdf_path, page_number):
 # ========== CONSTANTS ==========
 WHATSAPP_NUMBER = "6593537789"
 WHATSAPP_URL = f"https://wa.me/{WHATSAPP_NUMBER}"
-DEFAULT_PDF_PATH = "./data/tenancy_agreement.pdf"   # sample file
-TEMP_PDF_PATH    = "./data/session_contract.pdf"    # single temporary place
+DEFAULT_PDF_PATH = "./data/tenancy_agreement.pdf"  # used by chat.ask internally
 
 try:
     from FAQ_DATA import FAQ_ITEMS
@@ -120,14 +121,9 @@ if "prefill_login_username" not in st.session_state: st.session_state.prefill_lo
 if "last_logged_in_username" not in st.session_state: st.session_state.last_logged_in_username = ""
 if "login_nonce" not in st.session_state: st.session_state.login_nonce = 0
 
-# Which PDF is currently active for Q&A and preview
+# Track which PDF is currently active for viewing
 if "active_pdf_path" not in st.session_state:
     st.session_state.active_pdf_path = DEFAULT_PDF_PATH
-    # ensure chat backend points to default at start
-    try:
-        chat.set_active_pdf(DEFAULT_PDF_PATH)
-    except Exception:
-        pass
 
 # ========== SIMPLE AUTH STORE ==========
 USERS_FILE = "./data/users.json"
@@ -275,23 +271,30 @@ with st.sidebar:
     uploaded = st.file_uploader("Upload agreement (PDF)", type=["pdf"], key="upload_contract")
     if uploaded is not None:
         os.makedirs("./data", exist_ok=True)
-        with open(TEMP_PDF_PATH, "wb") as f:
+        temp_path = "./data/_uploaded_agreement.pdf"
+        with open(temp_path, "wb") as f:
             f.write(uploaded.read())
         st.success(f"Uploaded: {uploaded.name}")
 
         use_now = st.button("Use this file for Q&A", use_container_width=True, key="use_uploaded_qna")
         if use_now:
-            st.session_state.active_pdf_path = TEMP_PDF_PATH
-            # Tell backend to use the temp file (no overwrite of sample)
+            st.session_state.active_pdf_path = temp_path
+            # Copy to the default path expected by chat.ask()
             try:
-                chat.set_active_pdf(TEMP_PDF_PATH)
+                shutil.copyfile(temp_path, DEFAULT_PDF_PATH)
             except Exception as e:
-                st.warning(f"Backend did not accept active PDF path: {e}")
-            st.cache_data.clear()   # avoid stale caches (batch/other)
+                st.warning(f"Could not set default contract path: {e}")
+
+            # CRITICAL: reload retrieval module so it rebuilds on the new PDF
+            importlib.reload(chat)
+
+            # clear Streamlit caches that might hold old answers
+            st.cache_data.clear()
+
             st.rerun()
 
     # Quick status + reset
-    if st.session_state.active_pdf_path == TEMP_PDF_PATH:
+    if st.session_state.active_pdf_path != DEFAULT_PDF_PATH:
         st.info("Using your uploaded agreement for Q&A.")
     else:
         st.caption("Using the default sample agreement.")
@@ -299,20 +302,12 @@ with st.sidebar:
     # Renamed as requested
     if st.button("Reset", use_container_width=True, key="reset_pdf"):
         st.session_state.active_pdf_path = DEFAULT_PDF_PATH
-        try:
-            chat.set_active_pdf(DEFAULT_PDF_PATH)
-        except Exception:
-            pass
+        # reload chat to point back to the sample file
+        importlib.reload(chat)
         st.cache_data.clear()
         st.rerun()
 
     if st.button("Logout", use_container_width=True, key="logout_btn"):
-        # optional clean-up of temp file
-        try:
-            if os.path.exists(TEMP_PDF_PATH):
-                os.remove(TEMP_PDF_PATH)
-        except Exception:
-            pass
         st.session_state.auth = False
         st.session_state.user = None
         st.session_state.messages = []
@@ -466,7 +461,7 @@ if user_input:
     st.session_state.show_modal = False
     st.session_state.messages.append({"role": "user", "content": user_input})
     with st.spinner("Searching your agreement..."):
-        res = chat.ask(user_input)  # uses whichever PDF chat.set_active_pdf() points to
+        res = chat.ask(user_input)  # call through module (supports reload)
     st.session_state.messages.append({"role": "assistant", "content": res})
     st.rerun()
 
@@ -548,7 +543,7 @@ with st.expander("📊 Batch Validation (Upload Excel/CSV with questions + refer
                 for i, row in rows.iterrows():
                     q = str(row["question"]).strip()
                     ref = str(row["reference"]).strip()
-                    pred_text = _cached_ask(q, sig)  # cache bound to active file
+                    pred_text = _cached_ask(q, sig)  # cache keyed to active file
                     preds.append(pred_text)
                     refs.append(ref)
                     progress.progress(min(len(preds) / total, 1.0))
@@ -581,3 +576,12 @@ if st.session_state.batch_eval is not None:
     elif f1 >= 0.80: st.info("Semantic match: Very Good (0.80–0.90)")
     elif f1 >= 0.70: st.warning("Semantic match: Good (0.70–0.80)")
     else: st.error("Semantic match: Low (F1 < 0.70)")
+
+    if st.checkbox("Show per-question results"):
+        rows_df = pd.DataFrame.from_records(data["rows_records"])
+        rows_df["prediction"] = preds
+        st.dataframe(rows_df[["question", "reference", "prediction"]], use_container_width=True)
+
+# ========== FOOTER ==========
+st.markdown("---")
+st.caption("💡 All answers are based on your actual tenancy agreement. Use the sidebar FAQ for common questions.")
