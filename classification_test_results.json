@@ -1,8 +1,8 @@
 {
-  "test_time": "2025-10-30T23:57:40.190314",
-  "total_questions": 16,
-  "correct": 7,
-  "accuracy": 43.75,
+  "test_time": "2025-11-13T02:09:30.276641",
+  "total_questions": 19,
+  "correct": 8,
+  "accuracy": 42.10526315789473,
   "confusion_matrix": {
     "High": {
       "High": 7,
@@ -11,18 +11,18 @@
     },
     "Medium": {
       "High": 4,
-      "Medium": 0,
+      "Medium": 1,
       "Low": 0
     },
     "Low": {
-      "High": 4,
-      "Medium": 1,
+      "High": 3,
+      "Medium": 4,
       "Low": 0
     }
   },
   "per_class_accuracy": {
     "High": 100.0,
-    "Medium": 0.0,
+    "Medium": 20.0,
     "Low": 0.0
   },
   "results": [
@@ -30,7 +30,7 @@
       "question": "When is my rent due each month?",
       "expected": "High",
       "actual": "High",
-      "score": 0.545853038909777,
+      "score": 0.46314086492698525,
       "has_reference": true,
       "correct": true
     },
@@ -38,7 +38,7 @@
       "question": "What is the security deposit amount?",
       "expected": "High",
       "actual": "High",
-      "score": 0.46651502810516554,
+      "score": 0.5560793623294082,
       "has_reference": true,
       "correct": true
     },
@@ -46,7 +46,7 @@
       "question": "Who pays for electricity and water?",
       "expected": "High",
       "actual": "High",
-      "score": 0.6719746485787553,
+      "score": 0.6368673377232175,
       "has_reference": true,
       "correct": true
     },
@@ -54,7 +54,7 @@
       "question": "What's the diplomatic clause?",
       "expected": "High",
       "actual": "High",
-      "score": 0.5788063802444715,
+      "score": 0.5787750052050751,
       "has_reference": true,
       "correct": true
     },
@@ -62,7 +62,7 @@
       "question": "Who is responsible for air conditioning maintenance?",
       "expected": "High",
       "actual": "High",
-      "score": 0.42820588520203173,
+      "score": 0.4464812028890267,
       "has_reference": true,
       "correct": true
     },
@@ -70,7 +70,7 @@
       "question": "Can I keep pets?",
       "expected": "High",
       "actual": "High",
-      "score": 0.6371633872795921,
+      "score": 0.6786030307988608,
       "has_reference": true,
       "correct": true
     },
@@ -78,79 +78,103 @@
       "question": "Who pays for repairs under $200?",
       "expected": "High",
       "actual": "High",
-      "score": 0.5224580908188221,
+      "score": 0.5387062570252228,
       "has_reference": true,
       "correct": true
     },
     {
-      "question": "Can I paint the walls?",
+      "question": "Can I install a dishwasher?",
+      "expected": "Medium",
+      "actual": "Medium",
+      "score": 0.7344873683191774,
+      "has_reference": true,
+      "correct": true
+    },
+    {
+      "question": "What if the aircon breaks during the first week?",
       "expected": "Medium",
       "actual": "High",
-      "score": 0.5995649399168171,
+      "score": 0.5278925176459031,
       "has_reference": true,
       "correct": false
     },
     {
-      "question": "What happens if I want to install a washing machine?",
+      "question": "Can my parents visit and stay for 2 months?",
       "expected": "Medium",
       "actual": "High",
-      "score": 0.6947678640351069,
+      "score": 0.6300944442342105,
       "has_reference": true,
       "correct": false
     },
     {
-      "question": "Can I hang pictures on the wall?",
+      "question": "What happens if I accidentally break a window?",
       "expected": "Medium",
       "actual": "High",
-      "score": 0.541710029053833,
+      "score": 0.6946092158817823,
       "has_reference": true,
       "correct": false
     },
     {
-      "question": "What if I need to break the lease due to job loss?",
+      "question": "Can I sublet one room to a friend?",
       "expected": "Medium",
       "actual": "High",
-      "score": 0.5318094923662184,
+      "score": 0.6293998446261497,
       "has_reference": true,
       "correct": false
     },
     {
-      "question": "How do I negotiate a rent reduction?",
+      "question": "What's the best internet service provider in Singapore?",
       "expected": "Low",
       "actual": "High",
-      "score": 0.6428756915742199,
+      "score": 0.6581871218183204,
       "has_reference": true,
       "correct": false
     },
     {
-      "question": "What's the average rent in this area?",
+      "question": "How do I apply for a work permit?",
       "expected": "Low",
       "actual": "High",
-      "score": 0.6856085746775441,
+      "score": 0.6482188630517607,
       "has_reference": true,
       "correct": false
     },
     {
-      "question": "Can I get a tax deduction for my rent?",
-      "expected": "Low",
-      "actual": "High",
-      "score": 0.6189077301103448,
-      "has_reference": true,
-      "correct": false
-    },
-    {
-      "question": "Which moving company do you recommend?",
+      "question": "Where can I buy furniture nearby?",
       "expected": "Low",
       "actual": "Medium",
-      "score": 0.8029884900859912,
+      "score": 0.7773720278465883,
       "has_reference": true,
       "correct": false
     },
     {
-      "question": "How do I apply for a housing loan?",
+      "question": "What's the weather like in Singapore?",
+      "expected": "Low",
+      "actual": "Medium",
+      "score": 0.70246231476837,
+      "has_reference": true,
+      "correct": false
+    },
+    {
+      "question": "How do I open a bank account in DBS?",
       "expected": "Low",
       "actual": "High",
-      "score": 0.6299894749669005,
+      "score": 0.6500105978970006,
+      "has_reference": true,
+      "correct": false
+    },
+    {
+      "question": "Which primary school is good for my children?",
+      "expected": "Low",
+      "actual": "Medium",
+      "score": 0.8638489526501856,
+      "has_reference": true,
+      "correct": false
+    },
+    {
+      "question": "Where is the nearest MRT station?",
+      "expected": "Low",
+      "actual": "Medium",
+      "score": 0.7380762039653617,
       "has_reference": true,
       "correct": false
     }

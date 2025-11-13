@@ -1,0 +1,138 @@
+{
+  "test_time": "2025-11-13T10:35:54.534563",
+  "classification_type": "binary",
+  "total_questions": 17,
+  "correct": 14,
+  "accuracy": 82.35294117647058,
+  "confusion_matrix": {
+    "CanAnswer": {
+      "CanAnswer": 8,
+      "CannotAnswer": 2
+    },
+    "CannotAnswer": {
+      "CanAnswer": 1,
+      "CannotAnswer": 6
+    }
+  },
+  "results": [
+    {
+      "question": "When is my rent due each month?",
+      "expected": "CanAnswer",
+      "actual": "CanAnswer",
+      "score": 0.46320111284247156,
+      "correct": true
+    },
+    {
+      "question": "What is the security deposit amount?",
+      "expected": "CanAnswer",
+      "actual": "CanAnswer",
+      "score": 0.556092879055383,
+      "correct": true
+    },
+    {
+      "question": "Who pays for electricity and water?",
+      "expected": "CanAnswer",
+      "actual": "CanAnswer",
+      "score": 0.636947627971756,
+      "correct": true
+    },
+    {
+      "question": "What's the diplomatic clause?",
+      "expected": "CanAnswer",
+      "actual": "CanAnswer",
+      "score": 0.5787976450211976,
+      "correct": true
+    },
+    {
+      "question": "Who is responsible for air conditioning maintenance?",
+      "expected": "CanAnswer",
+      "actual": "CanAnswer",
+      "score": 0.44660764393453634,
+      "correct": true
+    },
+    {
+      "question": "Can I keep pets?",
+      "expected": "CanAnswer",
+      "actual": "CannotAnswer",
+      "score": 0.6784757965381589,
+      "correct": false
+    },
+    {
+      "question": "Who pays for repairs under $200?",
+      "expected": "CanAnswer",
+      "actual": "CanAnswer",
+      "score": 0.5387016486203307,
+      "correct": true
+    },
+    {
+      "question": "Can I install a dishwasher?",
+      "expected": "CanAnswer",
+      "actual": "CannotAnswer",
+      "score": 0.7345254865908888,
+      "correct": false
+    },
+    {
+      "question": "What if the aircon breaks during the first week?",
+      "expected": "CanAnswer",
+      "actual": "CanAnswer",
+      "score": 0.5278917415306709,
+      "correct": true
+    },
+    {
+      "question": "Can my parents visit and stay for 2 months?",
+      "expected": "CanAnswer",
+      "actual": "CanAnswer",
+      "score": 0.6301086820975093,
+      "correct": true
+    },
+    {
+      "question": "What's the best internet service provider in Singapore?",
+      "expected": "CannotAnswer",
+      "actual": "CannotAnswer",
+      "score": 0.6581498452474817,
+      "correct": true
+    },
+    {
+      "question": "How do I apply for a work permit?",
+      "expected": "CannotAnswer",
+      "actual": "CanAnswer",
+      "score": 0.648305291344883,
+      "correct": false
+    },
+    {
+      "question": "Where can I buy furniture nearby?",
+      "expected": "CannotAnswer",
+      "actual": "CannotAnswer",
+      "score": 0.777423082441945,
+      "correct": true
+    },
+    {
+      "question": "What's the weather like in Singapore?",
+      "expected": "CannotAnswer",
+      "actual": "CannotAnswer",
+      "score": 0.7023949369352935,
+      "correct": true
+    },
+    {
+      "question": "How do I open a bank account in DBS?",
+      "expected": "CannotAnswer",
+      "actual": "CannotAnswer",
+      "score": 0.6500227868260132,
+      "correct": true
+    },
+    {
+      "question": "Which primary school is good for my children?",
+      "expected": "CannotAnswer",
+      "actual": "CannotAnswer",
+      "score": 0.863858181471747,
+      "correct": true
+    },
+    {
+      "question": "Where is the nearest MRT station?",
+      "expected": "CannotAnswer",
+      "actual": "CannotAnswer",
+      "score": 0.7382771446256206,
+      "correct": true
+    }
+  ]
+}

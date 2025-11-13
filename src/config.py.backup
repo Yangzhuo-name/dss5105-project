@@ -1,0 +1,22 @@
+# src/config.py - AUTO GENERATED
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
+    raise ValueError("Missing OPENAI_API_KEY")
+
+EMBEDDING_MODEL = "text-embedding-3-small"
+CHAT_MODEL = "gpt-4o-mini"
+
+CHUNK_SIZE = 450
+CHUNK_OVERLAP = 100
+
+TOP_K_RETRIEVAL = 10
+TOP_K_CONTEXT = 3
+USE_MMR = False
+MMR_LAMBDA = 0.7
+
+THRESHOLD_CAN_ANSWER = 0.7

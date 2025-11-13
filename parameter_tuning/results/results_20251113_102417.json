@@ -1,0 +1,426 @@
+{
+  "test_time": "2025-11-13T10:24:17.039101",
+  "elapsed_minutes": 21.016371166666666,
+  "results": [
+    {
+      "params": {
+        "chunk_size": 450,
+        "chunk_overlap": 100,
+        "threshold": 0.7
+      },
+      "accuracy": 75.0,
+      "can_acc": 88.88888888888889,
+      "cannot_acc": 57.14285714285714
+    },
+    {
+      "params": {
+        "chunk_size": 450,
+        "chunk_overlap": 100,
+        "threshold": 0.72
+      },
+      "accuracy": 68.75,
+      "can_acc": 88.88888888888889,
+      "cannot_acc": 42.857142857142854
+    },
+    {
+      "params": {
+        "chunk_size": 450,
+        "chunk_overlap": 100,
+        "threshold": 0.75
+      },
+      "accuracy": 68.75,
+      "can_acc": 100.0,
+      "cannot_acc": 28.57142857142857
+    },
+    {
+      "params": {
+        "chunk_size": 450,
+        "chunk_overlap": 100,
+        "threshold": 0.78
+      },
+      "accuracy": 62.5,
+      "can_acc": 100.0,
+      "cannot_acc": 14.285714285714285
+    },
+    {
+      "params": {
+        "chunk_size": 450,
+        "chunk_overlap": 100,
+        "threshold": 0.8
+      },
+      "accuracy": 62.5,
+      "can_acc": 100.0,
+      "cannot_acc": 14.285714285714285
+    },
+    {
+      "params": {
+        "chunk_size": 450,
+        "chunk_overlap": 100,
+        "threshold": 0.82
+      },
+      "accuracy": 62.5,
+      "can_acc": 100.0,
+      "cannot_acc": 14.285714285714285
+    },
+    {
+      "params": {
+        "chunk_size": 450,
+        "chunk_overlap": 100,
+        "threshold": 0.85
+      },
+      "accuracy": 62.5,
+      "can_acc": 100.0,
+      "cannot_acc": 14.285714285714285
+    },
+    {
+      "params": {
+        "chunk_size": 450,
+        "chunk_overlap": 150,
+        "threshold": 0.7
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 450,
+        "chunk_overlap": 150,
+        "threshold": 0.72
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 450,
+        "chunk_overlap": 150,
+        "threshold": 0.75
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 450,
+        "chunk_overlap": 150,
+        "threshold": 0.78
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 450,
+        "chunk_overlap": 150,
+        "threshold": 0.8
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 450,
+        "chunk_overlap": 150,
+        "threshold": 0.82
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 450,
+        "chunk_overlap": 150,
+        "threshold": 0.85
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 500,
+        "chunk_overlap": 100,
+        "threshold": 0.7
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 500,
+        "chunk_overlap": 100,
+        "threshold": 0.72
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 500,
+        "chunk_overlap": 100,
+        "threshold": 0.75
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 500,
+        "chunk_overlap": 100,
+        "threshold": 0.78
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 500,
+        "chunk_overlap": 100,
+        "threshold": 0.8
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 500,
+        "chunk_overlap": 100,
+        "threshold": 0.82
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 500,
+        "chunk_overlap": 100,
+        "threshold": 0.85
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 500,
+        "chunk_overlap": 150,
+        "threshold": 0.7
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 500,
+        "chunk_overlap": 150,
+        "threshold": 0.72
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 500,
+        "chunk_overlap": 150,
+        "threshold": 0.75
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 500,
+        "chunk_overlap": 150,
+        "threshold": 0.78
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 500,
+        "chunk_overlap": 150,
+        "threshold": 0.8
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 500,
+        "chunk_overlap": 150,
+        "threshold": 0.82
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 500,
+        "chunk_overlap": 150,
+        "threshold": 0.85
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 600,
+        "chunk_overlap": 100,
+        "threshold": 0.7
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 600,
+        "chunk_overlap": 100,
+        "threshold": 0.72
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 600,
+        "chunk_overlap": 100,
+        "threshold": 0.75
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 600,
+        "chunk_overlap": 100,
+        "threshold": 0.78
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 600,
+        "chunk_overlap": 100,
+        "threshold": 0.8
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 600,
+        "chunk_overlap": 100,
+        "threshold": 0.82
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 600,
+        "chunk_overlap": 100,
+        "threshold": 0.85
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 600,
+        "chunk_overlap": 150,
+        "threshold": 0.7
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 600,
+        "chunk_overlap": 150,
+        "threshold": 0.72
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 600,
+        "chunk_overlap": 150,
+        "threshold": 0.75
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 600,
+        "chunk_overlap": 150,
+        "threshold": 0.78
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 600,
+        "chunk_overlap": 150,
+        "threshold": 0.8
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 600,
+        "chunk_overlap": 150,
+        "threshold": 0.82
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    },
+    {
+      "params": {
+        "chunk_size": 600,
+        "chunk_overlap": 150,
+        "threshold": 0.85
+      },
+      "accuracy": 0.0,
+      "can_acc": 0.0,
+      "cannot_acc": 0.0
+    }
+  ]
+}
