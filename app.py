@@ -559,37 +559,9 @@ for i, msg in enumerate(st.session_state.messages):
         )
 
         # ========== Reference 部分 ==========
-        if is_comprehensive:
-            # 综合问题：显示汇总信息
-            if reference and isinstance(reference, dict):
-                pages = reference.get("pages", [])
-                num_clauses = reference.get("num_clauses", 0)
-                topics = reference.get("topics", [])
-                
-                if num_clauses > 0:
-                    pages_str = ", ".join(map(str, sorted(set(pages)))) if pages else "N/A"
-                    topics_str = ", ".join(topics) if topics else "N/A"
-                    
-                    with st.expander(f"📑 View All Sources ({num_clauses} clauses)", expanded=False):
-                        st.markdown(
-                            f"""
-                            <div style="background:linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-                                        color:white; padding:1.25rem 1.5rem; border-radius:12px; margin-bottom:1.25rem;
-                                        box-shadow:0 4px 12px rgba(59,130,246,0.2);">
-                                <div style="font-size:1rem; font-weight:600;">📍 Comprehensive Answer Sources</div>
-                                <div style="margin-top:0.5rem; opacity:0.95; font-size:0.9rem;">
-                                    {num_clauses} clauses from pages: {pages_str}
-                                </div>
-                                <div style="margin-top:0.25rem; opacity:0.9; font-size:0.85rem;">
-                                    Topics: {topics_str}
-                                </div>
-                            </div>
-                            """,
-                            unsafe_allow_html=True
-                        )
-                        st.info(f"💡 This answer synthesized information from {num_clauses} different clauses across {len(set(pages))} pages.")
-        
-        else:
+        # 功能2（综合问题）：不显示任何reference
+        # 功能1（简单问题）：显示完整reference + PDF跳转
+        if not is_comprehensive:
             # 简单问题：显示单个条款 + PDF跳转
             if reference and isinstance(reference, dict):
                 ref_text = reference.get("text", "")
