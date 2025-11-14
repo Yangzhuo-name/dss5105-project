@@ -22,15 +22,20 @@ def create_pdf_viewer(pdf_path, page_number):
             base64_pdf = base64.b64encode(pdf_data).decode('utf-8')
         viewer_page = int(page_number) + 1
         return f'''
-        <div style="margin-top:1.5rem; position:relative;">
-            <embed src="data:application/pdf;base64,{base64_pdf}#page={viewer_page}"
-                   type="application/pdf" width="100%" height="750px"
-                   style="border:2px solid rgba(199,125,255,0.3);border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.08);" />
+        <div style="margin-top:1.5rem; position:relative; width:100%; height:800px;">
+            <iframe 
+                src="data:application/pdf;base64,{base64_pdf}#page={viewer_page}&zoom=100&toolbar=1&navpanes=1&scrollbar=1"
+                type="application/pdf" 
+                width="100%" 
+                height="100%"
+                style="border:2px solid rgba(59,130,246,0.3); border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,0.08);">
+            </iframe>
             <div style="position:absolute; top:16px; right:16px; 
-                        background:linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); 
+                        background:linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); 
                         color:white; padding:10px 20px; border-radius:10px; 
                         font-weight:600; font-size:0.9rem;
-                        box-shadow:0 4px 12px rgba(199,125,255,0.3);">
+                        box-shadow:0 4px 12px rgba(59,130,246,0.3);
+                        z-index:10;">
                 📄 Page {viewer_page}
             </div>
         </div>'''
@@ -49,7 +54,7 @@ try:
 except ImportError:
     FAQ_ITEMS = {}
 
-# ========== MODERN CLAUDE-STYLE CSS ==========
+# ========== MODERN CSS ==========
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -95,11 +100,11 @@ st.markdown("""
     }
     
     .header-box {
-        background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
         padding: 3rem 2.5rem;
         border-radius: 20px;
         margin-bottom: 2.5rem;
-        box-shadow: 0 4px 16px rgba(30, 58, 138, 0.15);
+        box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
@@ -120,14 +125,14 @@ st.markdown("""
     }
     
     .user-msg {
-        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
         color: white;
         padding: 1rem 1.25rem;
         border-radius: 20px 20px 4px 20px;
         margin: 0.75rem 0;
         max-width: 65%;
         margin-left: auto;
-        box-shadow: 0 2px 8px rgba(30, 64, 175, 0.15);
+        box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
         font-size: 0.95rem;
         line-height: 1.6;
         font-weight: 400;
@@ -262,8 +267,8 @@ st.markdown("""
     }
     
     .stChatInput > div:focus-within {
-        border-color: #1e40af;
-        box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
     }
     
     ::-webkit-scrollbar {
@@ -553,41 +558,75 @@ for i, msg in enumerate(st.session_state.messages):
             unsafe_allow_html=True
         )
 
-        if reference and isinstance(reference, dict):
-            ref_text = reference.get("text", "")
-            ref_page = reference.get("page", "?")
-            display_page = int(ref_page) + 1 if str(ref_page).isdigit() else ref_page
-            with st.expander("📄 View Source", expanded=False):
-                st.markdown(
-                    f'''
-                    <div style="background:linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
-                                color:white; padding:1.25rem 1.5rem; border-radius:12px; margin-bottom:1.25rem;
-                                box-shadow:0 4px 12px rgba(199,125,255,0.2);">
-                        <div style="font-size:1rem; font-weight:600;">📍 Contract Reference</div>
-                        <div style="margin-top:0.5rem; opacity:0.95; font-size:0.9rem;">
-                            Page {display_page}
+        # ========== Reference 部分 ==========
+        if is_comprehensive:
+            # 综合问题：显示汇总信息
+            if reference and isinstance(reference, dict):
+                pages = reference.get("pages", [])
+                num_clauses = reference.get("num_clauses", 0)
+                topics = reference.get("topics", [])
+                
+                if num_clauses > 0:
+                    pages_str = ", ".join(map(str, sorted(set(pages)))) if pages else "N/A"
+                    topics_str = ", ".join(topics) if topics else "N/A"
+                    
+                    with st.expander(f"📑 View All Sources ({num_clauses} clauses)", expanded=False):
+                        st.markdown(
+                            f"""
+                            <div style="background:linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+                                        color:white; padding:1.25rem 1.5rem; border-radius:12px; margin-bottom:1.25rem;
+                                        box-shadow:0 4px 12px rgba(59,130,246,0.2);">
+                                <div style="font-size:1rem; font-weight:600;">📍 Comprehensive Answer Sources</div>
+                                <div style="margin-top:0.5rem; opacity:0.95; font-size:0.9rem;">
+                                    {num_clauses} clauses from pages: {pages_str}
+                                </div>
+                                <div style="margin-top:0.25rem; opacity:0.9; font-size:0.85rem;">
+                                    Topics: {topics_str}
+                                </div>
+                            </div>
+                            """,
+                            unsafe_allow_html=True
+                        )
+                        st.info(f"💡 This answer synthesized information from {num_clauses} different clauses across {len(set(pages))} pages.")
+        
+        else:
+            # 简单问题：显示单个条款 + PDF跳转
+            if reference and isinstance(reference, dict):
+                ref_text = reference.get("text", "")
+                ref_page = reference.get("page", "?")
+                display_page = int(ref_page) + 1 if str(ref_page).isdigit() else ref_page
+                
+                with st.expander("📄 View Source", expanded=False):
+                    st.markdown(
+                        f"""
+                        <div style="background:linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+                                    color:white; padding:1.25rem 1.5rem; border-radius:12px; margin-bottom:1.25rem;
+                                    box-shadow:0 4px 12px rgba(59,130,246,0.2);">
+                            <div style="font-size:1rem; font-weight:600;">📍 Contract Reference</div>
+                            <div style="margin-top:0.5rem; opacity:0.95; font-size:0.9rem;">
+                                Page {display_page}
+                            </div>
                         </div>
-                    </div>
-                    ''',
-                    unsafe_allow_html=True
-                )
-                st.markdown(
-                    f'''
-                    <div style="background:#f8fafc; padding:1.5rem; border-left:3px solid #1e40af;
-                                border-radius:10px; line-height:1.8; color:#334155; font-size:0.9rem;
-                                box-shadow:0 2px 8px rgba(0,0,0,0.04); margin-bottom:1.25rem;">
-                        <div style="color:#1e3a8a; font-weight:600; margin-bottom:0.75rem; font-size:0.85rem;">
-                            RELEVANT CLAUSE:
+                        """,
+                        unsafe_allow_html=True
+                    )
+                    st.markdown(
+                        f"""
+                        <div style="background:#f8fafc; padding:1.5rem; border-left:3px solid #3b82f6;
+                                    border-radius:10px; line-height:1.8; color:#334155; font-size:0.9rem;
+                                    box-shadow:0 2px 8px rgba(0,0,0,0.04); margin-bottom:1.25rem;">
+                            <div style="color:#2563eb; font-weight:600; margin-bottom:0.75rem; font-size:0.85rem;">
+                                RELEVANT CLAUSE:
+                            </div>
+                            {ref_text}
                         </div>
-                        {ref_text}
-                    </div>
-                    ''',
-                    unsafe_allow_html=True
-                )
-                if st.button(f"📖 View PDF (Page {display_page})", key=f"view_pdf_btn_{i}", use_container_width=True, type="primary"):
-                    page_for_viewer = int(ref_page) if str(ref_page).isdigit() else 0
-                    pdf_html = create_pdf_viewer(st.session_state.active_pdf_path, page_for_viewer)
-                    st.markdown(pdf_html, unsafe_allow_html=True)
+                        """,
+                        unsafe_allow_html=True
+                    )
+                    if st.button(f"📖 View PDF (Page {display_page})", key=f"view_pdf_btn_{i}", use_container_width=True, type="primary"):
+                        page_for_viewer = int(ref_page) if str(ref_page).isdigit() else 0
+                        pdf_html = create_pdf_viewer(st.session_state.active_pdf_path, page_for_viewer)
+                        st.markdown(pdf_html, unsafe_allow_html=True)
 
 # ========== CHAT INPUT ==========
 st.markdown("---")
